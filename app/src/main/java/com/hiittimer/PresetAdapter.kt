@@ -42,10 +42,4 @@ class PresetAdapter(
         presets.remove(preset)
         notifyDataSetChanged()
     }
-    
-    fun updatePresets(newPresets: List<WorkoutPreset>) {
-        presets.clear()
-        presets.addAll(newPresets)
-        notifyDataSetChanged()
-    }
 }

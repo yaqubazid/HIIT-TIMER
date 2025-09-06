@@ -66,4 +66,6 @@
     <string name="hint_rest_seconds">Rest seconds</string>
     <string name="hint_cool_down_minutes">Cool down minutes</string>
     <string name="hint_cool_down_seconds">Cool down seconds</string>
+    <string name="bug_report">Bug Report</string>
+    <string name="tip_jar">Tip Jar</string>
 </resources>

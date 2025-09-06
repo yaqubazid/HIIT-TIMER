@@ -22,7 +22,7 @@ class SettingsActivity : AppCompatActivity() {
             }
             try {
                 startActivity(intent)
-            } catch (e: ActivityNotFoundException) {
+            } catch (_: ActivityNotFoundException) {
                 Toast.makeText(this, "No email client installed.", Toast.LENGTH_SHORT).show()
             }
         }
