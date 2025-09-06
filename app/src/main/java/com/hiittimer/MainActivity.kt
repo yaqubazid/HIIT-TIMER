@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.LinearLayout
+import android.widget.ListView // Added import for ListView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var coolDownMinutesText: EditText
     private lateinit var coolDownSecondsText: EditText
 
-    private lateinit var totalTimeText: EditText
+    private lateinit var totalTimeText: EditText // This is the EditText in activity_main.xml
     private lateinit var timerStatusText: TextView
     private lateinit var countdownTimerText: TextView
 
@@ -323,6 +324,10 @@ class MainActivity : AppCompatActivity() {
     private fun showSaveWorkoutDialog() {
         val dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_save_workout, null)
         val workoutTitleEditText = dialogView.findViewById<EditText>(R.id.workout_title_edittext)
+        val dialogTotalTimeTextView = dialogView.findViewById<TextView>(R.id.dialog_total_workout_time_value) // Find the new TextView
+
+        // Set the total time from the main activity's EditText to the dialog's TextView
+        dialogTotalTimeTextView.text = totalTimeText.text.toString()
 
         AlertDialog.Builder(this, R.style.AlertDialogCustomStyle)
             .setView(dialogView)
@@ -364,14 +369,21 @@ class MainActivity : AppCompatActivity() {
             }
 
             val mutablePresets = presetsList.toMutableList()
-            lateinit var loadDialog: AlertDialog
+            lateinit var loadDialog: AlertDialog // Keep this for dismissing the dialog
+
+            // Inflate the custom view for the dialog's content
+            val dialogContentView = LayoutInflater.from(this@MainActivity).inflate(R.layout.dialog_load_workout_view, null, false)
+            // val dialogTotalTimeTextView = dialogContentView.findViewById<TextView>(R.id.dialog_load_total_workout_time_value) // This line is removed
+            val presetsListViewInDialog = dialogContentView.findViewById<ListView>(R.id.presets_list_view_in_dialog)
+
+            // dialogTotalTimeTextView.text = totalTimeText.text.toString() // This line is removed
 
             val adapter = PresetAdapter(
                 this@MainActivity,
                 mutablePresets,
                 onPresetLoad = { preset ->
                     applyPresetToUI(preset)
-                    loadDialog.dismiss()
+                    loadDialog.dismiss() // Dismiss the dialog
                 },
                 onPresetDelete = { presetToDelete ->
                     AlertDialog.Builder(this@MainActivity, R.style.AlertDialogCustomStyle)
@@ -380,11 +392,11 @@ class MainActivity : AppCompatActivity() {
                         .setPositiveButton("Delete") { _, _ ->
                             lifecycleScope.launch {
                                 dao.deletePreset(presetToDelete.title)
-                                val currentAdapter = loadDialog.listView.adapter as? PresetAdapter
+                                val currentAdapter = presetsListViewInDialog.adapter as? PresetAdapter
                                 currentAdapter?.removePreset(presetToDelete)
                                 Toast.makeText(this@MainActivity, "Preset '${presetToDelete.title}' deleted", Toast.LENGTH_SHORT).show()
                                 if (currentAdapter?.count == 0) {
-                                    loadDialog.dismiss()
+                                    loadDialog.dismiss() // Dismiss the main dialog if no presets left
                                     Toast.makeText(this@MainActivity, "No saved presets remaining", Toast.LENGTH_SHORT).show()
                                 }
                             }
@@ -394,12 +406,13 @@ class MainActivity : AppCompatActivity() {
                 }
             )
 
-            // Inflate the custom title layout
+            presetsListViewInDialog.adapter = adapter // Set adapter to the ListView in our custom layout
+
             val customTitleView = LayoutInflater.from(this@MainActivity).inflate(R.layout.dialog_title_centered, null, false)
 
             val builder = AlertDialog.Builder(this@MainActivity, R.style.AlertDialogCustomStyle)
-                .setCustomTitle(customTitleView) // Use setCustomTitle
-                .setAdapter(adapter, null)
+                .setCustomTitle(customTitleView)
+                .setView(dialogContentView) // Set the custom view containing the ListView
                 .setNegativeButton("Cancel", null)
 
             loadDialog = builder.create()

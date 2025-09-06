@@ -23,4 +23,5 @@
 
     <color name="button_background_themed">#FFFFFFFF</color>
     <color name="button_text_themed">#FF000000</color>
+    <color name="icon_color_dynamic">#FFFFFFFF</color> <!-- White for dark mode -->
 </resources>

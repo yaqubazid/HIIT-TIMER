@@ -30,4 +30,5 @@
 
     <color name="button_background_themed">#FF000000</color>
     <color name="button_text_themed">#FFFFFFFF</color>
+    <color name="icon_color_dynamic">#FF000000</color> <!-- Black for light mode -->
 </resources>

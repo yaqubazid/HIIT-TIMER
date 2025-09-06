@@ -11,4 +11,14 @@
         android:layout_height="wrap_content"
         android:hint="Enter workout title" />
 
+    <TextView
+        android:id="@+id/dialog_total_workout_time_value"
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content"
+        android:text="00:00" 
+        android:textSize="18sp"
+        android:textAlignment="viewEnd" 
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"/>
+
 </LinearLayout>

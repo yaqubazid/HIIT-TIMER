@@ -5,13 +5,28 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton // Added import for ImageButton
 import android.widget.Toast
 import androidx.core.net.toUri // Added KTX import
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.AdView
+// import com.google.android.gms.ads.MobileAds // No longer needed here if initialized in MainActivity or Application class
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
+        // MobileAds.initialize(this) {} // Removed as it's initialized in MainActivity
+
+        val adView: AdView = findViewById(R.id.adView)
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+
+        val backArrowButton: ImageButton = findViewById(R.id.back_arrow_button)
+        backArrowButton.setOnClickListener {
+            finish() // Finishes SettingsActivity, returning to the previous activity (likely MainActivity)
+        }
 
         val bugReportButton: Button = findViewById(R.id.bug_report_button)
         bugReportButton.setOnClickListener {

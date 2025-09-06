@@ -1,4 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
@@ -13,12 +14,22 @@
         android:textSize="18sp"
         android:textColor="?android:attr/textColorPrimary" />
 
+    <TextView
+        android:id="@+id/preset_total_time_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="?android:attr/textColorSecondary"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/default_preset_duration" />
+
     <ImageButton
         android:id="@+id/delete_preset_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@android:drawable/ic_menu_delete"
-        android:tint="?attr/iconTintColor"
+        app:tint="?attr/iconTintColor"
         android:background="?android:attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Delete Preset" />
+        android:contentDescription="@string/content_description_delete_preset_button" />
 </LinearLayout>
