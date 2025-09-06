@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sets">Sets</string>
+    <string name="decrease_sets">Decrease Sets</string>
+    <string name="_5">5</string>
+    <string name="increase_sets">Increase Sets</string>
+    <string name="decrease_get_ready_time">Decrease Get Ready Time</string>
+    <string name="_00">00</string>
+</resources>

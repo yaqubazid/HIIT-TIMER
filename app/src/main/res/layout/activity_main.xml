@@ -1,0 +1,595 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:background="?attr/colorPrimary"
+        app:popupTheme="?attr/actionBarPopupTheme"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/toolbar_title_interval_setup"
+            android:textColor="@color/toolbarTitleColor"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginTop="50dp" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/content_scroll_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/toolbar"
+        app:layout_constraintBottom_toTopOf="@+id/adView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/interval_setup_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:layout_marginTop="8dp">
+
+                <!-- Sets Row -->
+                <LinearLayout
+                    android:layout_width="match_parent" 
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="4dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/sets"
+                        android:textSize="18sp" />
+
+                    <ImageButton
+                        android:id="@+id/sets_minus_btn"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:background="@drawable/circular_button_background"
+                        android:contentDescription="@string/decrease_sets"
+                        android:src="@drawable/ic_minus"
+                        app:tint="?attr/colorControlNormal" />
+
+                    <EditText
+                        android:id="@+id/sets_count_text"
+                        android:layout_width="76dp"
+                        android:layout_height="35dp"
+                        android:text="@string/_00" 
+                        android:hint="@string/hint_sets_count"
+                        android:textSize="18sp"
+                        android:minEms="2"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:inputType="number"
+                        android:imeOptions="actionDone"
+                        android:background="@android:color/transparent"
+                        android:autofillHints=""
+                        android:textAlignment="center"
+                        android:textColor="?android:attr/textColorPrimary" />
+
+                    <ImageButton
+                        android:id="@+id/sets_plus_btn"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_plus"
+                        android:background="@drawable/circular_button_background"
+                        android:contentDescription="@string/increase_sets"
+                        app:tint="?attr/colorControlNormal" />
+                </LinearLayout>
+
+                <!-- Get Ready Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="4dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/get_ready"
+                        android:textSize="18sp"/>
+                    <ImageButton
+                        android:id="@+id/get_ready_minus_btn"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_minus"
+                        android:background="@drawable/circular_button_background"
+                        android:contentDescription="@string/decrease_get_ready_time"
+                        app:tint="?attr/colorControlNormal" />
+                    <LinearLayout
+                        android:id="@+id/get_ready_time_wrapper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp">
+
+                        <EditText
+                            android:id="@+id/get_ready_minutes"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:text="@string/_00"
+                            android:hint="@string/hint_get_ready_minutes"
+                            android:textSize="18sp"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:imeOptions="actionNext"
+                            android:background="@android:color/transparent"
+                            android:textAlignment="center"
+                            android:minEms="2"
+                            android:autofillHints=""
+                            android:textColor="?android:attr/textColorPrimary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/colon_separator"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:paddingStart="1dp"
+                            android:paddingEnd="1dp"/>
+
+                        <EditText
+                            android:id="@+id/get_ready_seconds"
+                            android:layout_width="35dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/_00" 
+                            android:hint="@string/hint_get_ready_seconds"
+                            android:textSize="18sp"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:imeOptions="actionDone"
+                            android:background="@android:color/transparent"
+                            android:textAlignment="center"
+                            android:minEms="2"
+                            android:autofillHints=""
+                            android:textColor="?android:attr/textColorPrimary" />
+
+                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/get_ready_plus_btn"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_plus"
+                        android:background="@drawable/circular_button_background"
+                        android:contentDescription="@string/increase_get_ready_time"
+                        app:tint="?attr/colorControlNormal" />
+                </LinearLayout>
+
+                <!-- Timer Per Set Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="4dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/label_timer_per_set"
+                        android:textSize="18sp"/>
+                    <ImageButton
+                        android:id="@+id/work_minus_btn"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_minus"
+                        android:background="@drawable/circular_button_background"
+                        android:contentDescription="@string/decrease_work_time"
+                        app:tint="?attr/colorControlNormal" />
+                    <LinearLayout
+                        android:id="@+id/work_time_wrapper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp">
+
+                        <EditText
+                            android:id="@+id/work_minutes"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:text="@string/_00"
+                            android:hint="@string/hint_work_minutes"
+                            android:textSize="18sp"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:imeOptions="actionNext"
+                            android:background="@android:color/transparent"
+                            android:textAlignment="center"
+                            android:minEms="2"
+                            android:autofillHints=""
+                            android:textColor="?android:attr/textColorPrimary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/colon_separator"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:paddingStart="1dp"
+                            android:paddingEnd="1dp"/>
+
+                        <EditText
+                            android:id="@+id/work_seconds"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:text="@string/_00" 
+                            android:hint="@string/hint_work_seconds"
+                            android:textSize="18sp"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:imeOptions="actionDone"
+                            android:background="@android:color/transparent"
+                            android:textAlignment="center"
+                            android:minEms="2"
+                            android:paddingStart="2dp"
+                            android:paddingEnd="2dp"
+                            android:autofillHints=""
+                            android:textColor="?android:attr/textColorPrimary" />
+                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/work_plus_btn"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_plus"
+                        android:background="@drawable/circular_button_background"
+                        android:contentDescription="@string/increase_work_time"
+                        app:tint="?attr/colorControlNormal" />
+                </LinearLayout>
+
+                <!-- Rest Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="4dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/rest"
+                        android:textSize="18sp"/>
+                    <ImageButton
+                        android:id="@+id/rest_minus_btn"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_minus"
+                        android:background="@drawable/circular_button_background"
+                        android:contentDescription="@string/decrease_rest_time"
+                        app:tint="?attr/colorControlNormal" />
+                    <LinearLayout
+                        android:id="@+id/rest_time_wrapper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp">
+
+                        <EditText
+                            android:id="@+id/rest_minutes"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:text="@string/_00"
+                            android:hint="@string/hint_rest_minutes"
+                            android:textSize="18sp"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:imeOptions="actionNext"
+                            android:background="@android:color/transparent"
+                            android:textAlignment="center"
+                            android:minEms="2"
+                            android:autofillHints=""
+                            android:textColor="?android:attr/textColorPrimary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/colon_separator"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:paddingStart="1dp"
+                            android:paddingEnd="1dp"/>
+
+                        <EditText
+                            android:id="@+id/rest_seconds"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:text="@string/_00" 
+                            android:hint="@string/hint_rest_seconds"
+                            android:textSize="18sp"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:imeOptions="actionDone"
+                            android:background="@android:color/transparent"
+                            android:textAlignment="center"
+                            android:minEms="2"
+                            android:paddingStart="2dp"
+                            android:paddingEnd="2dp"
+                            android:autofillHints=""
+                            android:textColor="?android:attr/textColorPrimary" />
+                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/rest_plus_btn"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_plus"
+                        android:background="@drawable/circular_button_background"
+                        android:contentDescription="@string/increase_rest_time"
+                        app:tint="?attr/colorControlNormal" />
+                </LinearLayout>
+
+                <!-- Cool Down Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="4dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/cool_down"
+                        android:textSize="18sp"/>
+                    <ImageButton
+                        android:id="@+id/cool_down_minus_btn"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_minus"
+                        android:background="@drawable/circular_button_background"
+                        android:contentDescription="@string/decrease_cool_down_time"
+                        app:tint="?attr/colorControlNormal" />
+                    <LinearLayout
+                        android:id="@+id/cool_down_time_wrapper"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp">
+
+                        <EditText
+                            android:id="@+id/cool_down_minutes"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:text="@string/_00"
+                            android:hint="@string/hint_cool_down_minutes"
+                            android:textSize="18sp"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:imeOptions="actionNext"
+                            android:background="@android:color/transparent"
+                            android:textAlignment="center"
+                            android:minEms="2"
+                            android:autofillHints=""
+                            android:textColor="?android:attr/textColorPrimary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/colon_separator"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:paddingStart="1dp"
+                            android:paddingEnd="1dp"/>
+
+                        <EditText
+                            android:id="@+id/cool_down_seconds"
+                            android:layout_width="35dp"
+                            android:layout_height="35dp"
+                            android:text="@string/_00" 
+                            android:hint="@string/hint_cool_down_seconds"
+                            android:textSize="18sp"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:imeOptions="actionDone"
+                            android:background="@android:color/transparent"
+                            android:textAlignment="center"
+                            android:minEms="2"
+                            android:paddingStart="2dp"
+                            android:paddingEnd="2dp"
+                            android:autofillHints=""
+                            android:textColor="?android:attr/textColorPrimary" />
+                    </LinearLayout>
+                    <ImageButton
+                        android:id="@+id/cool_down_plus_btn"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_plus"
+                        android:background="@drawable/circular_button_background"
+                        android:contentDescription="@string/increase_cool_down_time"
+                        app:tint="?attr/colorControlNormal" />
+                </LinearLayout>
+
+                <!-- Total Workout Timer Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="4dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/label_total_workout_timer"
+                        android:textSize="18sp"
+                        android:textStyle="bold"/>
+                    <ImageButton
+                        android:id="@+id/total_workout_time_minus_btn"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_minus"
+                        android:background="@drawable/circular_button_background"
+                        android:contentDescription="@string/decrease_total_workout_time"
+                        app:tint="?attr/colorControlNormal" />
+                    <EditText
+                        android:id="@+id/total_workout_time_value"
+                        android:layout_width="78dp"
+                        android:layout_height="wrap_content"
+                        android:text="@string/initial_total_workout_time_0000"
+                        android:textSize="18sp"
+                        android:inputType="number"
+                        android:maxLength="5"
+                        android:minEms="4"
+                        android:imeOptions="actionDone"
+                        android:background="@android:color/transparent"
+                        android:textAlignment="center"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:autofillHints=""
+                        android:textColor="?android:attr/textColorPrimary" />
+                    <ImageButton
+                        android:id="@+id/total_workout_time_plus_btn"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:src="@drawable/ic_plus"
+                        android:background="@drawable/circular_button_background"
+                        android:contentDescription="@string/increase_total_workout_time"
+                        app:tint="?attr/colorControlNormal" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/timer_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:layout_marginTop="8dp">
+
+                <TextView
+                    android:id="@+id/timer_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stopped"
+                    android:textSize="24sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/countdown_timer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/display_countdown_initial" 
+                    android:textSize="68sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/button_layout"
+                style="?android:attr/buttonBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="12dp"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/start_btn"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/rounded_button_background"
+                    app:backgroundTint="@null"
+                    android:text="@string/start"
+                    android:textColor="@color/button_text_themed" />
+
+                <Button
+                    android:id="@+id/skip_btn"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/rounded_button_background"
+                    app:backgroundTint="@null"
+                    android:text="@string/skip"
+                    android:textColor="@color/button_text_themed"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/reset_btn"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/rounded_button_background"
+                    app:backgroundTint="@null"
+                    android:text="@string/reset"
+                    android:textColor="@color/button_text_themed" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        app:adSize="BANNER"
+        app:adUnitId="ca-app-pub-3940256099942544/6300978111"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav_top_border"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:id="@+id/bottom_nav_top_border"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:background="@color/bottom_nav_top_border_color"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:backgroundTint="@color/bottom_nav_background_color"
+        android:elevation="8dp"
+        app:itemIconTint="@color/icon_tint_color"
+        app:itemTextColor="@color/bottom_nav_item_text_color"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:menu="@menu/bottom_nav_menu"
+        app:labelVisibilityMode="labeled" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

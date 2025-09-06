@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="button_gray">#888888</color>
+
+    <color name="colorPrimary">@color/white</color> 
+    <color name="colorPrimaryVariant">@color/white</color> 
+    <color name="colorOnPrimary">@color/black</color> 
+    <color name="colorSecondary">@color/teal_200</color> 
+    <color name="colorSecondaryVariant">@color/teal_700</color>
+    <color name="colorOnSecondary">@color/black</color>
+    <color name="backgroundColor">@color/white</color>
+    <color name="textColor">@color/black</color>
+    <color name="toolbarTitleColor">#FF000000</color>
+    <color name="icon_tint_color">@color/black</color>
+    <color name="bottom_nav_item_text_color">@color/black</color>
+    <color name="dialog_button_text_color">@color/black</color>
+    <color name="bottom_nav_background_color">@color/white</color>
+    <color name="bottom_nav_top_border_color">@color/black</color>
+
+    <color name="bug_report_button_background_color">#FF000000</color>
+    <color name="bug_report_button_text_color">#FFFFFFFF</color>
+    <color name="button_outline_color">#FF000000</color>
+
+    <color name="button_background_themed">#FF000000</color>
+    <color name="button_text_themed">#FFFFFFFF</color>
+</resources>
