@@ -2,11 +2,11 @@ package com.hiittimer
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
+import androidx.core.net.toUri // Added KTX import
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +16,7 @@ class SettingsActivity : AppCompatActivity() {
         val bugReportButton: Button = findViewById(R.id.bug_report_button)
         bugReportButton.setOnClickListener {
             val intent = Intent(Intent.ACTION_SENDTO).apply {
-                data = Uri.parse("mailto:") // Only email apps should handle this
+                data = "mailto:".toUri() // Changed to KTX extension
                 putExtra(Intent.EXTRA_EMAIL, arrayOf("yaqubazid566@gmail.com"))
                 putExtra(Intent.EXTRA_SUBJECT, "Bug Report for HIIT Timer App")
             }

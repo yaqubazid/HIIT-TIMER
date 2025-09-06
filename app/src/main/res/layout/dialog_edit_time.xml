@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:inputType="number"
-        android:hint="Enter time in seconds" />
+        android:hint="@string/hint_enter_time_in_seconds"
+        android:autofillHints="none" />
 
 </LinearLayout>

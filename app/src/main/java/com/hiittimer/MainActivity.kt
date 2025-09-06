@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.text.Editable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -445,7 +444,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun startNextPhase() {
         currentTimer?.cancel()
-        var nextTimeToCountdown = 0L
+        var nextTimeToCountdown: Long
         val previousState = currentTimerState
 
         when (previousState) {
