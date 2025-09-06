@@ -23,9 +23,6 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdView
 import com.google.android.gms.ads.MobileAds
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.hiittimer.AppDatabase
-import com.hiittimer.PresetAdapter
-import com.hiittimer.WorkoutPreset
 import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.launch
 import java.util.Locale
@@ -694,7 +691,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateTotalTimeDisplay() {
         val totalWorkRestTime = (workTime + restTime) * setsCount
         val totalSeconds = (getReadyTime + totalWorkRestTime + coolDownTime)
-        totalTimeText.text = Editable.Factory.getInstance().newEditable(formatTime(totalSeconds))
+        totalTimeText.setText(formatTime(totalSeconds))
     }
 
     private fun updateTimerDisplay(seconds: Int) { // This is for the main countdown display
