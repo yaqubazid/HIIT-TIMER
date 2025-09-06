@@ -494,7 +494,7 @@
                         android:minHeight="48dp"
                         android:text="@string/initial_total_workout_time_0000"
                         android:textSize="18sp"
-                        android:inputType="number"
+                        android:inputType="none"
                         android:maxLength="5"
                         android:minEms="4"
                         android:imeOptions="actionDone"
@@ -503,7 +503,11 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
                         android:autofillHints=""
-                        android:textColor="?android:attr/textColorPrimary" />
+                        android:textColor="?android:attr/textColorPrimary"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
+                        android:clickable="false" />
                 </LinearLayout>
             </LinearLayout>
 
