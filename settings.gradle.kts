@@ -21,5 +21,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "HIIT Timer"
+rootProject.name = "HIIT TIMER"
 include(":app")
